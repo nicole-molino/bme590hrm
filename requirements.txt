@@ -3,3 +3,13 @@ numpy
 pytest-cov
 pytest-pep8
 pytest-pudb
+sphinx
+pandas
+jupyter
+scipy
+ipython
+matplotlib
+scikit-image
+scikit-learn
+scipy
+peakutils
