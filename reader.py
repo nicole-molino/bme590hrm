@@ -6,8 +6,11 @@ def readinfile(file):
         voltage = []
 
         for row in csv_reader:
-            t = float(row[0])
-            v = float(row[1])
-            time.append(t)
-            voltage.append(v)
+            try:
+                t = float(row[0])
+                v = float(row[1])
+                time.append(t)
+                voltage.append(v)
+            except ValueError:
+                continue
         return time, voltage
