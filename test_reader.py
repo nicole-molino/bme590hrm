@@ -1,10 +1,11 @@
 from reader import readinfile
 import pytest
+import numpy
 
 def test_reader():
-    (time, voltage) = readinfile('readertestdata.csv')
-    assert time == [1.0, 9.0, 4.4, 1.44]
-    assert voltage == [12.0, 18.0, 3.0, 4.0]
+    data = readinfile('readertestdata.csv')
+    numpy.testing.assert_array_equal(data, ([1.0, 12], [9, 18], [4.4, 3], [6, 4], [1.44, 6]))
+
     
 
 
