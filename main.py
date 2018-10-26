@@ -1,9 +1,12 @@
+from reader import readinfile
+
 if __name__ == "__main__":
     import numpy as np
     import logging
-
-    file = "test_data/test_data1.csv"
-    data = np.loadtxt(file, delimiter=',')
+    
+    # change file name when necessary
+    file = 'test_data/test_data29.csv'
+    data = readinfile(file)
 
     logging.basicConfig(filename="HRMLogging.txt",
                         format='%(asctime)s %(message)s',

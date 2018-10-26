@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'HRM Processor'
+project = 'HRM'
 copyright = '2018, Nicole Molino'
 author = 'Nicole Molino'
 
@@ -105,7 +105,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'HRMProcessordoc'
+htmlhelp_basename = 'HRMdoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -142,7 +142,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'hrmprocessor', 'HRM Processor Documentation',
+    (master_doc, 'hrm', 'HRM Documentation',
      [author], 1)
 ]
 
