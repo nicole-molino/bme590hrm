@@ -1,16 +1,22 @@
 import numpy
+import logging
 
+logging.basicConfig(filename="HRMLogging.txt",
+                    format='%(asctime)s %(message)s',
+                    datefmt='%m/%d/%Y %I:%M:%S %p',
+                    level=logging.DEBUG)
 
 def find_min_max(data):
     v = [i[1] for i in data]
     extremes = (min(v), max(v))
-
+    logging.info('Calculated extremes: %s', extremes)
     return extremes
 
 
 def find_duration(data):
     t = [i[0] for i in data]
     duration = t[len(t) - 1] - t[0]
+    logging.info('Calculated duration: %s', duration)
     return duration
 
 
@@ -68,18 +74,32 @@ def find_time_beats(dw1, dw2, dw3, dw4, dw5, dw6, p1, p2, p3, p4, p5, p6):
                                     dw3[p3, 0], dw4[p4, 0],
                                     dw5[p5, 0], dw6[p6, 0]))
 
+    logging.info('Calculated time of beats: %s', time_beats)
     return time_beats
 
 
 def find_total_numbeats(a1, a2, a3, a4, a5, a6):
     numbeats = a1 + a2 + a3 + a4 + a5 + a6
 
+
+    logging.info('Calculated total number of beats: %s', numbeats)
     return numbeats
 
 
 def find_bpm(duration, numbeats):
     dur = duration / 60
     bpm = numbeats / dur
+    print('bpm calculated')
+
+
+    if bpm > 300:
+        raise TypeError("TOOOOOOO HIGH")
+
+
+      #  except ValueError:
+          #  pass
+    #else:
+       # logging.info('Calculated BPM: %s', bpm)
 
     return bpm
 
