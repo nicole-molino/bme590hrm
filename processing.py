@@ -6,6 +6,7 @@ logging.basicConfig(filename="HRMLogging.txt",
                     datefmt='%m/%d/%Y %I:%M:%S %p',
                     level=logging.DEBUG)
 
+
 def find_min_max(data):
     """ finds extremes of voltage
 
@@ -151,7 +152,6 @@ def find_num_beats_per_window(p1, p2, p3, p4, p5, p6):
         nb6 (int): ...
         """
 
-
     return (len(p1), len(p2), len(p3), len(p4), len(p5), len(p6))
 
 
@@ -201,7 +201,6 @@ def find_total_numbeats(nb1, nb2, nb3, nb4, nb5, nb6):
     """
     numbeats = nb1 + nb2 + nb3 + nb4 + nb5 + nb6
 
-
     logging.info('Calculated total number of beats: %s', numbeats)
     return numbeats
 
@@ -214,7 +213,7 @@ def find_bpm(duration, numbeats):
         numbeats (int): total number of beats during trials
 
     Returns:
-        bpm (int) : heart rate
+        bpm (float) : heart rate
 
     Raises:
         TypeError: if the heart rate is above 300 bpm
@@ -225,15 +224,13 @@ def find_bpm(duration, numbeats):
     bpm = numbeats / dur
     print('bpm calculated')
 
-
     if bpm > 300:
         raise TypeError("TOOOOOOO HIGH")
 
-
-      #  except ValueError:
-          #  pass
-    #else:
-       # logging.info('Calculated BPM: %s', bpm)
+    #  except ValueError:
+    #  pass
+    # else:
+    # logging.info('Calculated BPM: %s', bpm)
 
     return bpm
 
@@ -242,7 +239,7 @@ def createdictionary(bpm, extremes, duration, numbeats, time_beats):
     """creates dictionary to save data
 
     Args:
-         bpm (int) : heart rate
+         bpm (float) : heart rate
          extremes (list): min and max of voltage
          duration (int) : time of trial
          numbeats (int): total number of beats during trials

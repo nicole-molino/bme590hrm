@@ -16,14 +16,14 @@ import pytest
 def test_minmax():
     data = ([1, 0], [8, 9], [-9999, 77], [0, 8], [0, 77], [999, -55])
     answer = find_min_max(data)
-    expected = (-55, 77)
+    expected = [-55, 77]
     assert answer == expected
 
 
 def test_minmax2():
     data = ([0, -1], [-1, 0])
     answer = find_min_max(data)
-    expected = (-1, 0)
+    expected = [-1, 0]
     assert answer == expected
 
 
@@ -138,7 +138,7 @@ def test_find_totalnumbeats():
     a5 = 8
     a6 = 9
 
-    numbeats = find_total_numbeats(a2, a3, a4, a5, a6)
+    numbeats = find_total_numbeats(a1, a2, a3, a4, a5, a6)
 
     assert numbeats == 40
 

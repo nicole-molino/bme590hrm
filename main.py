@@ -2,7 +2,7 @@ if __name__ == "__main__":
     import numpy as np
     import logging
 
-    file= "test_data/test_data1.csv"
+    file = "test_data/test_data1.csv"
     data = np.loadtxt(file, delimiter=',')
 
     logging.basicConfig(filename="HRMLogging.txt",
@@ -33,8 +33,6 @@ if __name__ == "__main__":
                                    pi3, pi4, pi5, pi6)
 
     numbeats = p.find_total_numbeats(nb2, nb3, nb4, nb5, nb6)
-
-
 
     # print(numbeats)
     try:
