@@ -42,8 +42,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.doctest',
     'sphinx.ext.intersphinx',
-    'sphinx.ext.ifconfig',
-    'sphinx.ext.githubpages',
+    'sphinx.ext.viewcode',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -133,7 +132,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'HRM.tex', 'HRM Documentation',
+    (master_doc, 'HRMProcessor.tex', 'HRM Processor Documentation',
      'Nicole Molino', 'manual'),
 ]
 
@@ -154,8 +153,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'HRM', 'HRM Documentation',
-     author, 'HRM', 'One line description of project.',
+    (master_doc, 'HRMProcessor', 'HRM Processor Documentation',
+     author, 'HRMProcessor', 'One line description of project.',
      'Miscellaneous'),
 ]
 
