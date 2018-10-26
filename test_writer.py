@@ -2,6 +2,7 @@ from writer import writefile
 
 import json
 
+
 def test_writer():
     dict = {}
     dict["h"] = 6
@@ -14,7 +15,3 @@ def test_writer():
         readdict = json.load(prac)
 
     assert readdict == dict
-
-
-
-

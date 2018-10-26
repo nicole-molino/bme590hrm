@@ -17,6 +17,5 @@ def writefile(metrics, file):
     Returns:
         file (JSON file): returns file with desired name
     """
-    with open((file + '.json') , 'w') as filename:
+    with open((file + '.json'), 'w') as filename:
         json.dump(metrics, filename)
-
