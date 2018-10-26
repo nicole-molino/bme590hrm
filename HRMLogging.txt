@@ -252,3 +252,13 @@
 10/25/2018 11:46:09 PM Calculated duration: 1200
 10/25/2018 11:46:10 PM Calculated time of beats: [ 1.58333333  7.83333333 14.16666667 20.41666667 26.71666667 33.01666667]
 10/25/2018 11:46:10 PM Calculated total number of beats: 40
+10/26/2018 12:19:59 AM Calculated extremes: [-55, 77]
+10/26/2018 12:19:59 AM Calculated extremes: [-1, 0]
+10/26/2018 12:19:59 AM Calculated duration: 1200
+10/26/2018 12:20:00 AM Calculated time of beats: [ 1.58333333  7.83333333 14.16666667 20.41666667 26.71666667 33.01666667]
+10/26/2018 12:20:00 AM Calculated total number of beats: 40
+10/26/2018 12:20:14 AM Calculated extremes: [-55, 77]
+10/26/2018 12:20:14 AM Calculated extremes: [-1, 0]
+10/26/2018 12:20:14 AM Calculated duration: 1200
+10/26/2018 12:20:14 AM Calculated time of beats: [ 1.58333333  7.83333333 14.16666667 20.41666667 26.71666667 33.01666667]
+10/26/2018 12:20:14 AM Calculated total number of beats: 40
