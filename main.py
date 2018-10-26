@@ -1,18 +1,21 @@
 if __name__ == "__main__":
     import numpy as np
     import logging
+    import json
     from reader import readinfile
-    
+    from writer import writefile
+
     # change file name when necessary
-    file = 'test_data/test_data29.csv'
-    data = readinfile(file)
+    nameoffile = 'test_data/test_data4'
+    filecsv = (nameoffile + '.csv')
+    data = readinfile(filecsv)
 
     logging.basicConfig(filename="HRMLogging.txt",
                         format='%(asctime)s %(message)s',
                         datefmt='%m/%d/%Y %I:%M:%S %p',
                         level=logging.DEBUG)
 
-    logging.info('File: %s', file)
+    logging.info('File: %s', filecsv)
 
     import processing as p
 
@@ -34,7 +37,7 @@ if __name__ == "__main__":
                                    dw5, dw6, pi1, pi2,
                                    pi3, pi4, pi5, pi6)
 
-    numbeats = p.find_total_numbeats(nb2, nb3, nb4, nb5, nb6)
+    numbeats = p.find_total_numbeats(nb1, nb2, nb3, nb4, nb5, nb6)
 
     # print(numbeats)
     try:
@@ -47,4 +50,5 @@ if __name__ == "__main__":
     metrics = p.createdictionary(bpm, voltage_extremes,
                                  duration, numbeats, time_beats)
     print(metrics)
-    
+
+    writefile(metrics, nameoffile)

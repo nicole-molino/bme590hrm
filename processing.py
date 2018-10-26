@@ -152,7 +152,7 @@ def find_num_beats_per_window(p1, p2, p3, p4, p5, p6):
         nb6 (int): ...
         """
 
-    return (len(p1), len(p2), len(p3), len(p4), len(p5), len(p6))
+    return len(p1), len(p2), len(p3), len(p4), len(p5), len(p6)
 
 
 def find_time_beats(dw1, dw2, dw3, dw4, dw5, dw6, p1, p2, p3, p4, p5, p6):
@@ -179,6 +179,8 @@ def find_time_beats(dw1, dw2, dw3, dw4, dw5, dw6, p1, p2, p3, p4, p5, p6):
     time_beats = numpy.concatenate((dw1[p1, 0], dw2[p2, 0],
                                     dw3[p3, 0], dw4[p4, 0],
                                     dw5[p5, 0], dw6[p6, 0]))
+
+    time_beats = numpy.ndarray.tolist(time_beats)
 
     logging.info('Calculated time of beats: %s', time_beats)
     return time_beats
