@@ -1,8 +1,7 @@
-from reader import readinfile
-
 if __name__ == "__main__":
     import numpy as np
     import logging
+    from reader import readinfile
     
     # change file name when necessary
     file = 'test_data/test_data29.csv'
@@ -48,3 +47,4 @@ if __name__ == "__main__":
     metrics = p.createdictionary(bpm, voltage_extremes,
                                  duration, numbeats, time_beats)
     print(metrics)
+    
