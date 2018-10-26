@@ -2,7 +2,7 @@ if __name__ == "__main__":
     import numpy as np
     import logging
 
-    file= "test_data/test_data12.csv"
+    file= "test_data/test_data1.csv"
     data = np.loadtxt(file, delimiter=',')
 
     logging.basicConfig(filename="HRMLogging.txt",
@@ -15,6 +15,7 @@ if __name__ == "__main__":
     import processing as p
 
     voltage_extremes = p.find_min_max(data)
+    print(voltage_extremes)
     # print(voltage_extremes)
     duration = p.find_duration(data)
     # print(duration)
@@ -31,7 +32,7 @@ if __name__ == "__main__":
                                    dw5, dw6, pi1, pi2,
                                    pi3, pi4, pi5, pi6)
 
-    numbeats = p.find_total_numbeats(nb1, nb2, nb3, nb4, nb5, nb6)
+    numbeats = p.find_total_numbeats(nb2, nb3, nb4, nb5, nb6)
 
 
 

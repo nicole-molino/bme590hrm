@@ -138,7 +138,7 @@ def test_find_totalnumbeats():
     a5 = 8
     a6 = 9
 
-    numbeats = find_total_numbeats(a1, a2, a3, a4, a5, a6)
+    numbeats = find_total_numbeats(a2, a3, a4, a5, a6)
 
     assert numbeats == 40
 
