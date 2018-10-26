@@ -1,34 +1,30 @@
 if __name__ == "__main__":
-
-
-
-
-
-
-
-
-
-
-
     import numpy as np
 
-    data = np.loadtxt("datatestprocess.csv", delimiter=',')
+    data = np.loadtxt("test_data/test_data26.csv", delimiter=',')
 
+    import processing as p
 
-    from processing import find_min_max
-    from processing import find_duration
-    from processing import find_peaks
-    from processing import find_num_beats
-    from processing import find_time_beats
-    from processing import find_bpm
-    from processing import createdictionary
+    voltage_extremes = p.find_min_max(data)
+    print(voltage_extremes)
+    duration = p.find_duration(data)
+    print(duration)
+    windowsize = p.find_windowsize(data)
+    print(windowsize)
+    (dw1, dw2, dw3, dw4, dw5, dw6) = p.define_windows(windowsize, data)
+    (pi1, pi2, pi3, pi4, pi5, pi6) = p.find_peaks(dw1,
+                                                  dw2, dw3, dw4, dw5, dw6)
+    (nb1, nb2, nb3, nb4, nb5, nb6) = p.find_num_beats_per_window(pi1,
+                                                                 pi2, pi3, pi4,
+                                                                 pi5, pi6)
+    time_beats = p.find_time_beats(dw1, dw2, dw3, dw4,
+                                   dw5, dw6, pi1, pi2,
+                                   pi3, pi4, pi5, pi6)
 
-    voltage_extremes = find_min_max(data)
-    duration = find_duration(data)
-    peakindex = find_peaks(data)
-    num_beats = find_num_beats(peakindex)
-    beats = find_time_beats(data,peakindex)
-    mean_hr_bpm = find_bpm(duration, num_beats)
-
-    metrics=createdictionary(mean_hr_bpm, voltage_extremes, duration, num_beats, beats)
+    numbeats = p.find_total_numbeats(nb1, nb2, nb3, nb4, nb5, nb6)
+    print(numbeats)
+    bpm = p.find_bpm(duration, numbeats)
+    print(bpm)
+    metrics = p.createdictionary(bpm, voltage_extremes,
+                                 duration, numbeats, time_beats)
     print(metrics)

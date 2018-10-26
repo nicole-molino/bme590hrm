@@ -1,45 +1,83 @@
+import numpy
+
+
 def find_min_max(data):
-    v=[i[1] for i in data]
+    v = [i[1] for i in data]
     extremes = (min(v), max(v))
 
     return extremes
 
 
 def find_duration(data):
-    t=[i[0] for i in data]
-    duration= t[len(t)-1]-t[0]
+    t = [i[0] for i in data]
+    duration = t[len(t) - 1] - t[0]
     return duration
 
 
-def find_peaks(x):
+def find_windowsize(data):
+    time = [i[0] for i in data]
+    voltage = [i[1] for i in data]
+
+    if len(time) != len(voltage):
+        total_index_data = len(voltage)
+    else:
+        total_index_data = min(len(time), len(voltage))
+
+    windowsize = round(total_index_data / 6)
+
+    return windowsize
+
+
+def define_windows(w, data):
+    data_w1 = data[0:w, :]
+    data_w2 = data[w:w * 2, :]
+    data_w3 = data[w * 2:w * 3, :]
+    data_w4 = data[w * 3:w * 4, :]
+    data_w5 = data[w * 4:w * 5, :]
+    data_w6 = data[w * 5:, :]
+
+    return data_w1, data_w2, data_w3, data_w4, data_w5, data_w6
+
+
+def find_peaks(dw1, dw2, dw3, dw4, dw5, dw6):
     import peakutils
-    voltage= [i[1] for i in x]
 
-    peakindex = peakutils.indexes(voltage, thres=.5 * max(voltage))
+    v1 = [i[1] for i in dw1]
+    v2 = [i[1] for i in dw2]
+    v3 = [i[1] for i in dw3]
+    v4 = [i[1] for i in dw4]
+    v5 = [i[1] for i in dw5]
+    v6 = [i[1] for i in dw6]
 
-    return peakindex
+    pi1 = peakutils.indexes(v1, thres=.5 * max(v1))
+    pi2 = peakutils.indexes(v2, thres=.5 * max(v2))
+    pi3 = peakutils.indexes(v3, thres=.5 * max(v3))
+    pi4 = peakutils.indexes(v4, thres=.5 * max(v4))
+    pi5 = peakutils.indexes(v5, thres=.5 * max(v5))
+    pi6 = peakutils.indexes(v6, thres=.5 * max(v6))
 
-def find_num_beats(x):
+    return pi1, pi2, pi3, pi4, pi5, pi6
 
 
-    if len(x) == 0:
-        raise TypeError("Heart not beating")
+def find_num_beats_per_window(p1, p2, p3, p4, p5, p6):
+    return (len(p1), len(p2), len(p3), len(p4), len(p5), len(p6))
 
-    try:
-        numbeats = len(x)
-    except TypeError:
-        print("Heart not beating")
+
+def find_time_beats(dw1, dw2, dw3, dw4, dw5, dw6, p1, p2, p3, p4, p5, p6):
+    time_beats = numpy.concatenate((dw1[p1, 0], dw2[p2, 0],
+                                    dw3[p3, 0], dw4[p4, 0],
+                                    dw5[p5, 0], dw6[p6, 0]))
+
+    return time_beats
+
+
+def find_total_numbeats(a1, a2, a3, a4, a5, a6):
+    numbeats = a1 + a2 + a3 + a4 + a5 + a6
 
     return numbeats
 
-def find_time_beats(data,peakindex):
 
-    peak_times = data[peakindex,0]
-
-    return peak_times
-
-def find_bpm(duration,numbeats):
-
+def find_bpm(duration, numbeats):
     dur = duration / 60
     bpm = numbeats / dur
 
@@ -47,13 +85,10 @@ def find_bpm(duration,numbeats):
 
 
 def createdictionary(a, b, c, d, e):
-    dict={}
+    dict = {}
     dict["mean_hr_bpm"] = a
     dict["voltage_extremes"] = b
     dict["duration"] = c
     dict["num_beats"] = d
     dict["beats"] = e
     return dict
-
-
-
