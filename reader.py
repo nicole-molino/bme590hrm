@@ -26,5 +26,4 @@ def readinfile(file):
         logging.warning("Tried to input non-numbers, process stopped")
         raise ValueError("Can only input numbers")
 
-
     return csv_data
